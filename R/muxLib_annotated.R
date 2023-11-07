@@ -4374,7 +4374,9 @@ GetCoverageEvolutionMultilayer <- function(SupraTransitionMatrix,
 
   cat(paste("  :: Inverting...", "\n"))
 
-  invQM <- inv(QM)
+  #invQM <- inv(QM)
+  invQM <- ginv(QM) # using the pseudoinverse
+  
   LM <- L.eigendec$values
 
   zero.idxs <- which(abs(Re(LM)) < 1e-12)
